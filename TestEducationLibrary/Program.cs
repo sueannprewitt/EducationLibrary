@@ -30,6 +30,14 @@ namespace TestEducationLibrary
             stud.GPA = 5.0;
             bool rc = StudentCollection.Insert(stud);
 
+            Student chgName = StudentCollection.Select(9);
+            chgName.FirstName = "Noah";
+            chgName.LastName = "Phense";
+            rc = StudentCollection.Update(chgName);
+
+            rc = StudentCollection.Delete(1005);
+
+
         }
         static void Main(string[] args)
         {

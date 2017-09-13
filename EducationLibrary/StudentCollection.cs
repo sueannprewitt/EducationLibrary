@@ -150,11 +150,57 @@ namespace EducationLibrary
         }
         public static bool Update(Student student)
         {
-            return false;
+            var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
+            SqlConnection connection = new SqlConnection(connStr);
+            connection.Open();
+            if (connection.State != System.Data.ConnectionState.Open)
+            {
+                Console.WriteLine("Connection did not open");
+                return false;
+            }
+
+            var sql = $"UPDATE Student Set " +
+                $"FirstName = '{student.FirstName}'," +
+                $"LastName = '{student.LastName}'," +
+                $"Address = '{student.Address}'," +
+                $"City = '{student.City}'," +
+                $"State = '{student.State}'," +
+                $"Zipcode = '{student.Zipcode}'," +
+                $"Birthday = '{student.Birthday}'," +
+                $"PhoneNumber = '{student.PhoneNumber}'," +
+                $"Email = '{student.Email}'," +
+                $"MajorId = {student.MajorId}," +
+                $"SAT = {student.SAT}," +
+                $"GPA = {student.GPA} " +
+                $"WHERE ID = {student.Id}";  //add where clause or you'd be updating your entire database!
+
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            var recsAffected = cmd.ExecuteNonQuery();
+            return (recsAffected == 1);
+
+
         }
+
+
+
         public static bool Delete (int id)
         {
-            return false;
+            var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
+            SqlConnection connection = new SqlConnection(connStr);
+            connection.Open();
+            if (connection.State != System.Data.ConnectionState.Open)
+            {
+                Console.WriteLine("Connection did not open");
+                return false;
+            }
+
+            var sql = $"DELETE from Student " +
+                $"WHERE ID = {id}";  
+
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            var recsAffected = cmd.ExecuteNonQuery();
+            return (recsAffected == 1);
+
         }
 
 
