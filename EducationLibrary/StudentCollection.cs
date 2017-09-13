@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 
 namespace EducationLibrary
 {
+
     //StudentCollection is a list of Students:
    public class StudentCollection : List<Student> {
 
+        private static string connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
+
+
         //get students so we need a method:
         public static StudentCollection Select()        {
-            var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
+           // var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
             SqlConnection connection = new SqlConnection(connStr);
             connection.Open();
             if(connection.State != System.Data.ConnectionState.Open)
@@ -67,7 +71,7 @@ namespace EducationLibrary
         }
     public static Student Select(int id)
     {
-            var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
+         //   var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
             SqlConnection connection = new SqlConnection(connStr);
             connection.Open();
             if (connection.State != System.Data.ConnectionState.Open)
@@ -129,7 +133,7 @@ namespace EducationLibrary
     }
         public static bool Insert(Student student)
         {
-            var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
+           // var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
             SqlConnection connection = new SqlConnection(connStr);
             connection.Open();
             if (connection.State != System.Data.ConnectionState.Open)
@@ -150,7 +154,7 @@ namespace EducationLibrary
         }
         public static bool Update(Student student)
         {
-            var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
+           // var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
             SqlConnection connection = new SqlConnection(connStr);
             connection.Open();
             if (connection.State != System.Data.ConnectionState.Open)
@@ -185,7 +189,7 @@ namespace EducationLibrary
 
         public static bool Delete (int id)
         {
-            var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
+           // var connStr = @"Server=Student05;Database=DotNetDatabase;Trusted_Connection=yes;";
             SqlConnection connection = new SqlConnection(connStr);
             connection.Open();
             if (connection.State != System.Data.ConnectionState.Open)
